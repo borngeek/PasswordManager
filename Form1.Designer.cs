@@ -28,114 +28,150 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.Login = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.StatusMessage = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.Login.SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            this.usernameTextbox = new System.Windows.Forms.TextBox();
+            this.passwordTextbox = new System.Windows.Forms.TextBox();
+            this.loginGroupbox = new System.Windows.Forms.GroupBox();
+            this.showPassword = new System.Windows.Forms.Button();
+            this.loginBtn = new System.Windows.Forms.Button();
+            this.accountTypeImageList = new System.Windows.Forms.ImageList(this.components);
+            this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.actionMessageLbl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StatusStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.loginGroupbox.SuspendLayout();
+            this.MainStatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // usernameTextbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(339, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(176, 23);
-            this.textBox1.TabIndex = 0;
+            this.usernameTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.usernameTextbox.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.usernameTextbox.Location = new System.Drawing.Point(304, 22);
+            this.usernameTextbox.MaxLength = 63;
+            this.usernameTextbox.Name = "usernameTextbox";
+            this.usernameTextbox.PlaceholderText = "Username";
+            this.usernameTextbox.Size = new System.Drawing.Size(176, 39);
+            this.usernameTextbox.TabIndex = 0;
             // 
-            // textBox2
+            // passwordTextbox
             // 
-            this.textBox2.Location = new System.Drawing.Point(339, 69);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(176, 23);
-            this.textBox2.TabIndex = 1;
+            this.passwordTextbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.passwordTextbox.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.passwordTextbox.Location = new System.Drawing.Point(304, 71);
+            this.passwordTextbox.MaxLength = 63;
+            this.passwordTextbox.Name = "passwordTextbox";
+            this.passwordTextbox.PasswordChar = '*';
+            this.passwordTextbox.PlaceholderText = "Password";
+            this.passwordTextbox.Size = new System.Drawing.Size(176, 39);
+            this.passwordTextbox.TabIndex = 1;
             // 
-            // Login
+            // loginGroupbox
             // 
-            this.Login.Controls.Add(this.button2);
-            this.Login.Controls.Add(this.button1);
-            this.Login.Controls.Add(this.StatusMessage);
-            this.Login.Controls.Add(this.label2);
-            this.Login.Controls.Add(this.label1);
-            this.Login.Controls.Add(this.textBox1);
-            this.Login.Controls.Add(this.textBox2);
-            this.Login.Location = new System.Drawing.Point(12, 12);
-            this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(744, 136);
-            this.Login.TabIndex = 2;
-            this.Login.TabStop = false;
-            this.Login.Text = "Login";
+            this.loginGroupbox.Controls.Add(this.showPassword);
+            this.loginGroupbox.Controls.Add(this.loginBtn);
+            this.loginGroupbox.Controls.Add(this.usernameTextbox);
+            this.loginGroupbox.Controls.Add(this.passwordTextbox);
+            this.loginGroupbox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.loginGroupbox.Location = new System.Drawing.Point(0, 0);
+            this.loginGroupbox.Name = "loginGroupbox";
+            this.loginGroupbox.Size = new System.Drawing.Size(768, 168);
+            this.loginGroupbox.TabIndex = 0;
+            this.loginGroupbox.TabStop = false;
+            this.loginGroupbox.Text = "Login";
             // 
-            // label1
+            // showPassword
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(273, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Username";
+            this.showPassword.Image = global::PasswordManager.Properties.Resources.eyecon_32;
+            this.showPassword.Location = new System.Drawing.Point(483, 70);
+            this.showPassword.Margin = new System.Windows.Forms.Padding(0);
+            this.showPassword.Name = "showPassword";
+            this.showPassword.Size = new System.Drawing.Size(40, 40);
+            this.showPassword.TabIndex = 3;
+            this.showPassword.UseVisualStyleBackColor = true;
+            this.showPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.showPassword_MouseDown);
+            this.showPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.showPassword_MouseUp);
             // 
-            // label2
+            // loginBtn
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(273, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Password";
+            this.loginBtn.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.loginBtn.Location = new System.Drawing.Point(304, 116);
+            this.loginBtn.Name = "loginBtn";
+            this.loginBtn.Size = new System.Drawing.Size(176, 40);
+            this.loginBtn.TabIndex = 2;
+            this.loginBtn.Text = "Login";
+            this.loginBtn.UseVisualStyleBackColor = true;
+            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
             // 
-            // StatusMessage
+            // accountTypeImageList
             // 
-            this.StatusMessage.AutoSize = true;
-            this.StatusMessage.Location = new System.Drawing.Point(389, 17);
-            this.StatusMessage.Name = "StatusMessage";
-            this.StatusMessage.Size = new System.Drawing.Size(0, 15);
-            this.StatusMessage.TabIndex = 4;
+            this.accountTypeImageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.accountTypeImageList.ImageSize = new System.Drawing.Size(16, 16);
+            this.accountTypeImageList.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // button1
+            // MainStatusStrip
             // 
-            this.button1.Location = new System.Drawing.Point(356, 98);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(66, 30);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = true;
+            this.MainStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.actionMessageLbl,
+            this.StatusStripProgressBar});
+            this.MainStatusStrip.Location = new System.Drawing.Point(0, 446);
+            this.MainStatusStrip.Name = "MainStatusStrip";
+            this.MainStatusStrip.Size = new System.Drawing.Size(768, 27);
+            this.MainStatusStrip.TabIndex = 4;
+            this.MainStatusStrip.Text = "statusStrip1";
             // 
-            // button2
+            // actionMessageLbl
             // 
-            this.button2.Location = new System.Drawing.Point(519, 73);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.actionMessageLbl.Margin = new System.Windows.Forms.Padding(3);
+            this.actionMessageLbl.Name = "actionMessageLbl";
+            this.actionMessageLbl.Padding = new System.Windows.Forms.Padding(3);
+            this.actionMessageLbl.Size = new System.Drawing.Size(180, 21);
+            this.actionMessageLbl.Text = "Welcome to PasswordManager!";
+            // 
+            // StatusStripProgressBar
+            // 
+            this.StatusStripProgressBar.Name = "StatusStripProgressBar";
+            this.StatusStripProgressBar.Size = new System.Drawing.Size(100, 21);
+            this.StatusStripProgressBar.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 168);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(768, 278);
+            this.panel1.TabIndex = 5;
             // 
             // PasswordManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(768, 450);
-            this.Controls.Add(this.Login);
+            this.ClientSize = new System.Drawing.Size(768, 473);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.MainStatusStrip);
+            this.Controls.Add(this.loginGroupbox);
             this.Name = "PasswordManager";
             this.Text = "PasswordManager";
-            this.Login.ResumeLayout(false);
-            this.Login.PerformLayout();
+            this.loginGroupbox.ResumeLayout(false);
+            this.loginGroupbox.PerformLayout();
+            this.MainStatusStrip.ResumeLayout(false);
+            this.MainStatusStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private GroupBox Login;
-        private Label label2;
-        private Label label1;
-        private Button button1;
-        private Label StatusMessage;
-        private Button button2;
+        private TextBox usernameTextbox;
+        private TextBox passwordTextbox;
+        private GroupBox loginGroupbox;
+        private Button loginBtn;
+        private Button showPassword;
+        private ImageList accountTypeImageList;
+        private StatusStrip MainStatusStrip;
+        private ToolStripStatusLabel actionMessageLbl;
+        private ToolStripProgressBar StatusStripProgressBar;
+        private Panel panel1;
     }
 }
