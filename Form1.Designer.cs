@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("google");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("yahoo");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("facebook");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("microsoft");
             this.usernameTextbox = new System.Windows.Forms.TextBox();
             this.passwordTextbox = new System.Windows.Forms.TextBox();
             this.loginGroupbox = new System.Windows.Forms.GroupBox();
@@ -38,9 +42,13 @@
             this.MainStatusStrip = new System.Windows.Forms.StatusStrip();
             this.actionMessageLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.loginGroupbox.SuspendLayout();
             this.MainStatusStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // usernameTextbox
@@ -89,6 +97,7 @@
             this.showPassword.Size = new System.Drawing.Size(40, 40);
             this.showPassword.TabIndex = 3;
             this.showPassword.UseVisualStyleBackColor = true;
+            this.showPassword.Leave += new System.EventHandler(this.showPassword_Leave);
             this.showPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.showPassword_MouseDown);
             this.showPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.showPassword_MouseUp);
             // 
@@ -134,20 +143,40 @@
             this.StatusStripProgressBar.Size = new System.Drawing.Size(100, 21);
             this.StatusStripProgressBar.Visible = false;
             // 
-            // panel1
+            // splitContainer1
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 168);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(768, 278);
-            this.panel1.TabIndex = 5;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 168);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.listView1);
+            this.splitContainer1.Size = new System.Drawing.Size(768, 278);
+            this.splitContainer1.SplitterDistance = 256;
+            this.splitContainer1.TabIndex = 5;
+            // 
+            // listView1
+            // 
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
+            this.listView1.LargeImageList = this.accountTypeImageList;
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(256, 278);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // PasswordManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 473);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.MainStatusStrip);
             this.Controls.Add(this.loginGroupbox);
             this.Name = "PasswordManager";
@@ -156,6 +185,9 @@
             this.loginGroupbox.PerformLayout();
             this.MainStatusStrip.ResumeLayout(false);
             this.MainStatusStrip.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,6 +204,7 @@
         private StatusStrip MainStatusStrip;
         private ToolStripStatusLabel actionMessageLbl;
         private ToolStripProgressBar StatusStripProgressBar;
-        private Panel panel1;
+        private SplitContainer splitContainer1;
+        private ListView listView1;
     }
 }
