@@ -55,10 +55,23 @@ namespace PasswordManager
 
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CommonDialog AboutDialog = new OpenDialog;
-            AboutDialog.ShowDialog(this);
+            Form AboutDialog = new();
+            AboutDialog.Size = new Size(400, 500);
+            AboutDialog.Text = "About PasswordManager";
+            Label AboutLbl = new Label();
+            AboutLbl.Dock = DockStyle.Fill;
+            AboutLbl.Text = "A Product of\nRamakrishna Mission Vidyamandira, Belurmath";
+            AboutLbl.TextAlign = ContentAlignment.MiddleCenter;
+            Button AboutOkBtn = new Button();
+            AboutOkBtn.Dock = DockStyle.Bottom;
+            AboutOkBtn.Text = "OK";
+            AboutDialog.Controls.Add(AboutLbl);
+            AboutDialog.Controls.Add(AboutOkBtn);
+            
+            AboutDialog.Visible = true;
+            AboutDialog.Show();
         }
     }
 }
