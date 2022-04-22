@@ -4,6 +4,7 @@ namespace PasswordManager
 {
     public partial class PasswordManager : Form
     {
+        readonly string secretKey = "RpP6YWfduAzRY9gwDOuxOLD03e6ijANcvHElTRvvv6YsSE5wKVaWdyl2SkeWaWx"; //To be Changed.
         public PasswordManager()
         {
             InitializeComponent();
@@ -66,7 +67,7 @@ namespace PasswordManager
             Form AboutDialog = new();
             AboutDialog.Size = new Size(400, 500);
             AboutDialog.Text = "About PasswordManager";
-            Label AboutLbl = new Label();
+            Label AboutLbl = new();
             AboutLbl.Dock = DockStyle.Fill;
             AboutLbl.Text = "A Product of\nRamakrishna Mission Vidyamandira, Belurmath";
             AboutLbl.TextAlign = ContentAlignment.MiddleCenter;
@@ -78,7 +79,6 @@ namespace PasswordManager
         private void ListView1_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible) {
-
                 XmlReader xReader = XmlReader.Create("C:\\Users\\FIST Lab - 09\\source\\repos\\PasswordManager\\Properties\\DataSources\\PasswordManagerDB.xml");
                 String LastElement = "";
                 while (xReader.Read())
@@ -90,6 +90,35 @@ namespace PasswordManager
                         listView1.Items.Add(xReader.Value);
                     } else if (xReader.NodeType == XmlNodeType.EndElement) 
                     { 
+                    }
+                    LastElement = xReader.Name;
+                }
+            }
+        }
+
+        private void ListView1_SelectedIndexChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            else
+            {
+                actionMessageLbl.Text = listView1.SelectedItems[0].Text;
+                listBox1.Items.Clear();
+                XmlReader xReader = XmlReader.Create("C:\\Users\\FIST Lab - 09\\source\\repos\\PasswordManager\\Properties\\DataSources\\PasswordManagerDB.xml");
+                String LastElement = "";
+                while (xReader.Read())
+                {
+                    if (xReader.NodeType == XmlNodeType.Element)
+                    {
+                    }
+                    else if (xReader.NodeType == XmlNodeType.Text && LastElement == "site-logo" && xReader.Value == listView1.SelectedItems[0].Text)
+                    {
+                        listBox1.Items.Add(xReader.Value);
+                    }
+                    else if (xReader.NodeType == XmlNodeType.EndElement)
+                    {
                     }
                     LastElement = xReader.Name;
                 }
