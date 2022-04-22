@@ -80,6 +80,9 @@
             this.showPassword.Size = new System.Drawing.Size(40, 40);
             this.showPassword.TabIndex = 7;
             this.showPassword.UseVisualStyleBackColor = true;
+            this.showPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ShowPassword_MouseDown);
+            this.showPassword.MouseLeave += new System.EventHandler(this.ShowPassword_Leave);
+            this.showPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ShowPassword_MouseUp);
             // 
             // loginBtn
             // 
@@ -168,11 +171,15 @@
             this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(254, 386);
+            this.listView1.Size = new System.Drawing.Size(254, 379);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.VisibleChanged += new System.EventHandler(this.ListView1_VisibleChanged);
             // 
             // listBox1
             // 
@@ -271,6 +278,7 @@
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

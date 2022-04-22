@@ -1,3 +1,5 @@
+using System.Xml;
+
 namespace PasswordManager
 {
     public partial class PasswordManager : Form
@@ -5,6 +7,8 @@ namespace PasswordManager
         public PasswordManager()
         {
             InitializeComponent();
+            menuStrip1.Visible = false;
+            splitContainer1.Visible = false;
             loginGroupbox.Visible = true;
         }
 
@@ -31,7 +35,9 @@ namespace PasswordManager
             if (usernameTextbox.Text == "anirbanc" && passwordTextbox.Text == "qwerty123")
             {
                 actionMessageLbl.Text = "Login Successful. Please Wait!";
-                loginGroupbox.Visible=false;
+                loginGroupbox.Visible = false;
+                menuStrip1.Visible = true;
+                splitContainer1.Visible = true;
             }
             else if (usernameTextbox.Text != "" || passwordTextbox.Text != "")
             {   
@@ -50,9 +56,9 @@ namespace PasswordManager
             }
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,14 +70,30 @@ namespace PasswordManager
             AboutLbl.Dock = DockStyle.Fill;
             AboutLbl.Text = "A Product of\nRamakrishna Mission Vidyamandira, Belurmath";
             AboutLbl.TextAlign = ContentAlignment.MiddleCenter;
-            Button AboutOkBtn = new Button();
-            AboutOkBtn.Dock = DockStyle.Bottom;
-            AboutOkBtn.Text = "OK";
-            AboutDialog.Controls.Add(AboutLbl);
-            AboutDialog.Controls.Add(AboutOkBtn);
-            
+            AboutDialog.Controls.Add(AboutLbl); 
             AboutDialog.Visible = true;
             AboutDialog.Show();
+        }
+
+        private void ListView1_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible) {
+
+                XmlReader xReader = XmlReader.Create("C:\\Users\\FIST Lab - 09\\source\\repos\\PasswordManager\\Properties\\DataSources\\PasswordManagerDB.xml");
+                String LastElement = "";
+                while (xReader.Read())
+                {   
+                    if (xReader.NodeType == XmlNodeType.Element) 
+                    {
+                    } else if (xReader.NodeType == XmlNodeType.Text && LastElement == "site-name")
+                    {
+                        listView1.Items.Add(xReader.Value);
+                    } else if (xReader.NodeType == XmlNodeType.EndElement) 
+                    { 
+                    }
+                    LastElement = xReader.Name;
+                }
+            }
         }
     }
 }
