@@ -21,7 +21,6 @@ namespace PasswordManager
         private void ShowPassword_MouseDown(object sender, MouseEventArgs e)
         {
             passwordTextbox.PasswordChar = '\0';
-
         }
 
         private void ShowPassword_MouseUp(object sender, MouseEventArgs e)
@@ -62,18 +61,31 @@ namespace PasswordManager
             this.Close();
         }
 
+        private void OkBtn_Click(object sender, EventArgs e) { 
+            AboutDialog.Close();
+        }
+
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form AboutDialog = new();
+            AboutDialog = new();
+            AboutLbl = new();
+            okBtn = new();
+
             AboutDialog.Size = new Size(400, 500);
             AboutDialog.Text = "About PasswordManager";
-            Label AboutLbl = new();
+            
             AboutLbl.Dock = DockStyle.Fill;
-            AboutLbl.Text = "A Product of\nRamakrishna Mission Vidyamandira, Belurmath";
+            AboutLbl.Text = "A Product of\nDept. of Computer Science\nRamakrishna Mission Vidyamandira, Belurmath";
             AboutLbl.TextAlign = ContentAlignment.MiddleCenter;
-            AboutDialog.Controls.Add(AboutLbl); 
+
+            okBtn.Dock = DockStyle.Bottom;
+            okBtn.Text = "OK"; 
+            
+            AboutDialog.Controls.Add(AboutLbl);
+            AboutDialog.Controls.Add(okBtn);
+
+            okBtn.Click += new System.EventHandler(this.OkBtn_Click);
             AboutDialog.Visible = true;
-            AboutDialog.Show();
         }
 
         private void ListView1_VisibleChanged(object sender, EventArgs e)
@@ -87,7 +99,7 @@ namespace PasswordManager
                     {
                     } else if (xReader.NodeType == XmlNodeType.Text && LastElement == "site-name")
                     {
-                        listView1.Items.Add(xReader.Value);
+                        SitelistListView.Items.Add(xReader.Value);
                     } else if (xReader.NodeType == XmlNodeType.EndElement) 
                     { 
                     }
@@ -96,16 +108,13 @@ namespace PasswordManager
             }
         }
 
-        private void ListView1_SelectedIndexChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        private void SitelistListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count == 0)
-            {
-                return;
-            }
-            else
-            {
-                actionMessageLbl.Text = listView1.SelectedItems[0].Text;
-                listBox1.Items.Clear();
+            if (SitelistListView.SelectedItems.Count == 0){return;}
+            else {
+                actionMessageLbl.Text = SitelistListView.SelectedItems[0].Text;
+                System.Threading.Thread.Sleep(3000);
+                AccountlistListBox.Items.Clear();
                 XmlReader xReader = XmlReader.Create("C:\\Users\\FIST Lab - 09\\source\\repos\\PasswordManager\\Properties\\DataSources\\PasswordManagerDB.xml");
                 String LastElement = "";
                 while (xReader.Read())
@@ -113,16 +122,22 @@ namespace PasswordManager
                     if (xReader.NodeType == XmlNodeType.Element)
                     {
                     }
-                    else if (xReader.NodeType == XmlNodeType.Text && LastElement == "site-logo" && xReader.Value == listView1.SelectedItems[0].Text)
+                    else if (xReader.NodeType == XmlNodeType.Text && LastElement == "site-logo" && xReader.Value == SitelistListView.SelectedItems[0].Text)
                     {
-                        listBox1.Items.Add(xReader.Value);
+                        AccountlistListBox.Items.Add(xReader.Value);
                     }
                     else if (xReader.NodeType == XmlNodeType.EndElement)
                     {
+                        //Do Nothing
                     }
                     LastElement = xReader.Name;
                 }
             }
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

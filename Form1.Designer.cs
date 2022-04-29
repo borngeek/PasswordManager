@@ -39,8 +39,8 @@
             this.actionMessageLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.SitelistListView = new System.Windows.Forms.ListView();
+            this.AccountlistListBox = new System.Windows.Forms.ListBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addDomainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -157,43 +157,44 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.listView1);
+            this.splitContainer1.Panel1.Controls.Add(this.SitelistListView);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.listBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.AccountlistListBox);
             this.splitContainer1.Size = new System.Drawing.Size(781, 392);
             this.splitContainer1.SplitterDistance = 260;
             this.splitContainer1.TabIndex = 5;
             // 
-            // listView1
+            // SitelistListView
             // 
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.SitelistListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listView1.Font = new System.Drawing.Font("Gabriola", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.listView1.FullRowSelect = true;
-            this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(3, 3);
-            this.listView1.MultiSelect = false;
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(254, 379);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.ListView1_SelectedIndexChanged);
-            this.listView1.VisibleChanged += new System.EventHandler(this.ListView1_VisibleChanged);
+            this.SitelistListView.Font = new System.Drawing.Font("Gabriola", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SitelistListView.FullRowSelect = true;
+            this.SitelistListView.GridLines = true;
+            this.SitelistListView.Location = new System.Drawing.Point(3, 3);
+            this.SitelistListView.MultiSelect = false;
+            this.SitelistListView.Name = "SitelistListView";
+            this.SitelistListView.Size = new System.Drawing.Size(254, 379);
+            this.SitelistListView.TabIndex = 0;
+            this.SitelistListView.UseCompatibleStateImageBehavior = false;
+            this.SitelistListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.SitelistListView_SelectedIndexChanged);
+            this.SitelistListView.VisibleChanged += new System.EventHandler(this.ListView1_VisibleChanged);
             // 
-            // listBox1
+            // AccountlistListBox
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.AccountlistListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(3, 3);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(509, 379);
-            this.listBox1.TabIndex = 0;
+            this.AccountlistListBox.FormattingEnabled = true;
+            this.AccountlistListBox.ItemHeight = 15;
+            this.AccountlistListBox.Location = new System.Drawing.Point(3, 3);
+            this.AccountlistListBox.Name = "AccountlistListBox";
+            this.AccountlistListBox.Size = new System.Drawing.Size(509, 379);
+            this.AccountlistListBox.TabIndex = 0;
             // 
             // menuStrip1
             // 
@@ -294,8 +295,8 @@
         private TextBox usernameTextbox;
         private TextBox passwordTextbox;
         private SplitContainer splitContainer1;
-        private ListView listView1;
-        private ListBox listBox1;
+        private ListView SitelistListView;
+        private ListBox AccountlistListBox;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem addDomainToolStripMenuItem;
@@ -304,5 +305,8 @@
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStripMenuItem settingsToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
+        private Form AboutDialog;
+        private Label AboutLbl;
+        private Button okBtn;
     }
 }
